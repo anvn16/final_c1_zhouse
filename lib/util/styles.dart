@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/util/dimensions.dart';
 import 'package:flutter/material.dart';
+
+import 'dimensions.dart';
 
 final robotoRegular = TextStyle(
   fontFamily: 'Averta',

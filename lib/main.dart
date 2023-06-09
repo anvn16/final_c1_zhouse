@@ -1,4 +1,7 @@
+import 'package:final_c1_zhouse/util/dimensions.dart';
+import 'package:final_c1_zhouse/util/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 void main() {
   runApp(const MyApp());
@@ -89,19 +92,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: const EdgeInsets.all(15),
                     child: Image.asset(Images.logo, width: 120),
                   ),
-
-                         Container(
-                          margin: const EdgeInsets.only(
-                              right: 15),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 1,
-                              color: Colors.grey.shade400,
-                            ),
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        )
-
+                  Container(
+                    margin: const EdgeInsets.only(right: 15),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.grey.shade400,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  )
                 ],
               ),
               Expanded(
@@ -110,316 +110,323 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: EdgeInsets.zero,
                     //.all(Dimensions.paddingSizeDefault),
                     physics: const BouncingScrollPhysics(),
-                      child: Center(
-                        child: Container(
-                          width: context.width > 700 ? 700 : context.width,
-                          padding: context.width > 700
-                              ? const EdgeInsets.all(15)
-                              : null,
-                          margin: context.width > 700
-                              ? const EdgeInsets.all(15)
-                              : null,
-                          decoration: context.width > 700
-                              ? BoxDecoration(
-                            color: Theme.of(context).cardColor,
-                            borderRadius:
-                            BorderRadius.circular(15),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors
-                                      .grey[300]!,
-                                  blurRadius: 5,
-                                  spreadRadius: 1)
-                            ],
-                          )
-                              : null,
-                          child:
-                          GetBuilder<AuthController>(builder: (authController) {
-                            return Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const SizedBox(
-                                      height: Dimensions.paddingSizeSmall),
-                                  // Center(child: Text(AppConstants.APP_NAME, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge))),
+                    child: Center(
+                      child: Container(
+                        width: 700,
+                        padding: const EdgeInsets.all(15),
+                        margin: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: Theme
+                              .of(context)
+                              .cardColor,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[300]!,
+                                blurRadius: 5,
+                                spreadRadius: 1)
+                          ],
+                        ),
+                        child:
+                        Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: Dimensions
+                                  .paddingSizeSmall),
+                              // Center(child: Text(AppConstants.APP_NAME, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge))),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: Dimensions.paddingSizeDefault,
+                                ),
+                                child: GradientText(
+                                  'sign_up',
+                                  style: robotoBlack.copyWith(fontSize: 24),
+                                  colors: const [
+                                    Colors.redAccent,
+                                    Colors.orange,
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 15,
+                                ),
+                                constraints:
+                                BoxConstraints(maxWidth: Get.width * 2 / 3),
+                                child: Text(
+                                    'Đăng ký để bắt đầu sử dụng các dịch vụ của Hzone',
+                                    style: robotoRegular.copyWith(
+                                      fontSize: 14,
+                                    )),
+                              ),
+                              const SizedBox(
+                                height: Dimensions.paddingSizeSmall,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  left: Dimensions.paddingSizeExtraSmall,
+                                  right: Dimensions.paddingSizeDefault,
+                                ),
+                                child: Column(children: [
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
-                                      horizontal: Dimensions.paddingSizeDefault,
-                                    ),
-                                    child: GradientText(
-                                      'sign_up'.tr,
-                                      style: robotoBlack.copyWith(fontSize: 24),
-                                      colors: const [
-                                        Colors.redAccent,
-                                        Colors.orange,
-                                      ],
+                                        vertical: Dimensions.paddingSizeSmall),
+                                    child: CustomTextField(
+                                      hintText: 'first_name'.tr,
+                                      controller: _firstNameController,
+                                      focusNode: _firstNameFocus,
+                                      nextFocus: _lastNameFocus,
+                                      inputType: TextInputType.name,
+                                      capitalization: TextCapitalization.words,
+                                      prefixIconData:
+                                      CupertinoIcons.doc_person_fill,
+                                      divider: false,
                                     ),
                                   ),
-                                  const SizedBox(height: 8),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 15,
-                                    ),
-                                    constraints:
-                                    BoxConstraints(maxWidth: Get.width * 2 / 3),
-                                    child: Text(
-                                        'Đăng ký để bắt đầu sử dụng các dịch vụ của Hzone',
-                                        style: robotoRegular.copyWith(
-                                          fontSize: 14,
-                                        )),
-                                  ),
-                                  const SizedBox(
-                                    height: Dimensions.paddingSizeSmall,
-                                  ),
+
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                      left: Dimensions.paddingSizeExtraSmall,
-                                      right: Dimensions.paddingSizeDefault,
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: Dimensions.paddingSizeSmall),
+                                    child: CustomTextField(
+                                      hintText: 'last_name'.tr,
+                                      controller: _lastNameController,
+                                      focusNode: _lastNameFocus,
+                                      nextFocus: _emailFocus,
+                                      inputType: TextInputType.name,
+                                      capitalization: TextCapitalization.words,
+                                      prefixIconData:
+                                      Icons.perm_contact_cal_sharp,
+                                      divider: false,
                                     ),
-                                    child: Column(children: [
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: Dimensions.paddingSizeSmall),
-                                        child: CustomTextField(
-                                          hintText: 'first_name'.tr,
-                                          controller: _firstNameController,
-                                          focusNode: _firstNameFocus,
-                                          nextFocus: _lastNameFocus,
-                                          inputType: TextInputType.name,
-                                          capitalization: TextCapitalization.words,
-                                          prefixIconData: CupertinoIcons.doc_person_fill,
-                                          divider: false,
-                                        ),
-                                      ),
+                                  ),
 
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: Dimensions.paddingSizeSmall),
-                                        child: CustomTextField(
-                                          hintText: 'last_name'.tr,
-                                          controller: _lastNameController,
-                                          focusNode: _lastNameFocus,
-                                          nextFocus: _emailFocus,
-                                          inputType: TextInputType.name,
-                                          capitalization: TextCapitalization.words,
-                                          prefixIconData: Icons.perm_contact_cal_sharp,
-                                          divider: false,
-                                        ),
-                                      ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: Dimensions.paddingSizeSmall),
+                                    child: CustomTextField(
+                                      hintText: 'email'.tr,
+                                      controller: _emailController,
+                                      focusNode: _emailFocus,
+                                      nextFocus: _phoneFocus,
+                                      inputType: TextInputType.emailAddress,
+                                      prefixIconData: CupertinoIcons.mail_solid,
+                                      divider: false,
+                                    ),
+                                  ),
 
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: Dimensions.paddingSizeSmall),
-                                        child: CustomTextField(
-                                          hintText: 'email'.tr,
-                                          controller: _emailController,
-                                          focusNode: _emailFocus,
-                                          nextFocus: _phoneFocus,
-                                          inputType: TextInputType.emailAddress,
-                                          prefixIconData: CupertinoIcons.mail_solid,
-                                          divider: false,
-                                        ),
-                                      ),
+                                  Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: Dimensions
+                                              .paddingSizeSmall),
+                                      child: CustomTextField(
+                                        hintText: 'phone'.tr,
+                                        controller: _phoneController,
+                                        focusNode: _phoneFocus,
+                                        nextFocus: _passwordFocus,
+                                        inputType: TextInputType.phone,
+                                        prefixText: '+84',
+                                        divider: false,
+                                      )),
+                                  // const Padding(padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge), child: Divider(height: 1)),
 
-                                      Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical:
-                                              Dimensions.paddingSizeSmall),
-                                          child: CustomTextField(
-                                            hintText: 'phone'.tr,
-                                            controller: _phoneController,
-                                            focusNode: _phoneFocus,
-                                            nextFocus: _passwordFocus,
-                                            inputType: TextInputType.phone,
-                                            prefixText: '+84',
-                                            divider: false,
-                                          )),
-                                      // const Padding(padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge), child: Divider(height: 1)),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: Dimensions.paddingSizeSmall),
+                                    child: CustomTextField(
+                                      hintText: 'password'.tr,
+                                      controller: _passwordController,
+                                      focusNode: _passwordFocus,
+                                      nextFocus: _confirmPasswordFocus,
+                                      inputType: TextInputType.visiblePassword,
+                                      prefixIconData: Icons.key_rounded,
+                                      isPassword: true,
+                                      divider: false,
+                                    ),
+                                  ),
 
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: Dimensions.paddingSizeSmall),
-                                        child: CustomTextField(
-                                          hintText: 'password'.tr,
-                                          controller: _passwordController,
-                                          focusNode: _passwordFocus,
-                                          nextFocus: _confirmPasswordFocus,
-                                          inputType: TextInputType.visiblePassword,
-                                          prefixIconData: Icons.key_rounded,
-                                          isPassword: true,
-                                          divider: false,
-                                        ),
-                                      ),
-
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: Dimensions.paddingSizeSmall),
-                                        child: CustomTextField(
-                                          hintText: 'confirm_password'.tr,
-                                          controller: _confirmPasswordController,
-                                          focusNode: _confirmPasswordFocus,
-                                          nextFocus: Get.find<SplashController>()
-                                              .configModel!
-                                              .refEarningStatus ==
-                                              1
-                                              ? _referCodeFocus
-                                              : null,
-                                          inputAction: Get.find<SplashController>()
-                                              .configModel!
-                                              .refEarningStatus ==
-                                              1
-                                              ? TextInputAction.next
-                                              : TextInputAction.done,
-                                          inputType: TextInputType.visiblePassword,
-                                          prefixIconData: Icons.key_rounded,
-                                          isPassword: true,
-                                          onSubmit: (text) => (GetPlatform.isWeb &&
-                                              authController.acceptTerms)
-                                              ? _register(
-                                              authController, _countryDialCode!)
-                                              : null,
-                                        ),
-                                      ),
-
-                                      (Get.find<SplashController>()
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: Dimensions.paddingSizeSmall),
+                                    child: CustomTextField(
+                                      hintText: 'confirm_password'.tr,
+                                      controller: _confirmPasswordController,
+                                      focusNode: _confirmPasswordFocus,
+                                      nextFocus: Get
+                                          .find<SplashController>()
                                           .configModel!
                                           .refEarningStatus ==
-                                          1)
-                                          ? Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical:
-                                            Dimensions.paddingSizeSmall),
-                                        child: CustomTextField(
-                                          hintText: 'refer_code'.tr,
-                                          controller: _referCodeController,
-                                          focusNode: _referCodeFocus,
-                                          inputAction: TextInputAction.done,
-                                          inputType: TextInputType.text,
-                                          capitalization:
-                                          TextCapitalization.words,
-                                          prefixIconData: Icons.share_rounded,
-                                          divider: false,
-                                          prefixSize: 14,
-                                        ),
-                                      )
-                                          : const SizedBox(),
-                                    ]),
+                                          1
+                                          ? _referCodeFocus
+                                          : null,
+                                      inputAction: Get
+                                          .find<SplashController>()
+                                          .configModel!
+                                          .refEarningStatus ==
+                                          1
+                                          ? TextInputAction.next
+                                          : TextInputAction.done,
+                                      inputType: TextInputType.visiblePassword,
+                                      prefixIconData: Icons.key_rounded,
+                                      isPassword: true,
+                                      onSubmit: (text) =>
+                                      (GetPlatform.isWeb &&
+                                          authController.acceptTerms)
+                                          ? _register(
+                                          authController, _countryDialCode!)
+                                          : null,
+                                    ),
                                   ),
-                                  const SizedBox(
-                                      height: Dimensions.paddingSizeLarge),
 
-                                  //ConditionCheckBox(authController: authController),
-
-                                  !authController.isLoading
+                                  (Get
+                                      .find<SplashController>()
+                                      .configModel!
+                                      .refEarningStatus ==
+                                      1)
                                       ? Padding(
                                     padding: const EdgeInsets.symmetric(
-                                      horizontal:
-                                      Dimensions.paddingSizeDefault,
+                                        vertical:
+                                        Dimensions.paddingSizeSmall),
+                                    child: CustomTextField(
+                                      hintText: 'refer_code'.tr,
+                                      controller: _referCodeController,
+                                      focusNode: _referCodeFocus,
+                                      inputAction: TextInputAction.done,
+                                      inputType: TextInputType.text,
+                                      capitalization:
+                                      TextCapitalization.words,
+                                      prefixIconData: Icons.share_rounded,
+                                      divider: false,
+                                      prefixSize: 14,
                                     ),
-                                    child: Column(
-                                      children: [
-                                        Row(children: [
-                                          Expanded(
-                                              child: CustomButton(
-                                                buttonText: 'sign_up'.tr,
-                                                onPressed:
-                                                authController.acceptTerms
-                                                    ? () => _register(
+                                  )
+                                      : const SizedBox(),
+                                ]),
+                              ),
+                              const SizedBox(height: Dimensions
+                                  .paddingSizeLarge),
+
+                              //ConditionCheckBox(authController: authController),
+
+                              !authController.isLoading
+                                  ? Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: Dimensions.paddingSizeDefault,
+                                ),
+                                child: Column(
+                                  children: [
+                                    Row(children: [
+                                      Expanded(
+                                          child: CustomButton(
+                                            buttonText: 'sign_up'.tr,
+                                            onPressed:
+                                            authController.acceptTerms
+                                                ? () =>
+                                                _register(
                                                     authController,
                                                     _countryDialCode!)
-                                                    : null,
-                                              )),
-                                        ]),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 5),
-                                                child: TextButton(
-                                                  style: TextButton.styleFrom(
-                                                    shape:
-                                                    RoundedRectangleBorder(
-                                                      side: BorderSide(
-                                                          width: 1.5,
-                                                          color: Theme.of(
-                                                              context)
-                                                              .primaryColor),
-                                                      borderRadius:
-                                                      BorderRadius.circular(
-                                                          28),
-                                                    ),
-                                                    minimumSize: const Size(
-                                                        Dimensions.webMaxWidth,
-                                                        42),
-                                                    padding: EdgeInsets.zero,
-                                                  ),
-                                                  onPressed: () => Get.toNamed(
+                                                : null,
+                                          )),
+                                    ]),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                            const EdgeInsets.symmetric(
+                                                horizontal: 5),
+                                            child: TextButton(
+                                              style: TextButton.styleFrom(
+                                                shape:
+                                                RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                      width: 1.5,
+                                                      color: Theme
+                                                          .of(
+                                                          context)
+                                                          .primaryColor),
+                                                  borderRadius:
+                                                  BorderRadius.circular(
+                                                      28),
+                                                ),
+                                                minimumSize: const Size(
+                                                    Dimensions.webMaxWidth,
+                                                    42),
+                                                padding: EdgeInsets.zero,
+                                              ),
+                                              onPressed: () =>
+                                                  Get.toNamed(
                                                       RouteHelper
                                                           .getSignInRoute(
                                                           RouteHelper
                                                               .signUp)),
-                                                  child: Row(
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      children: [
-                                                        Text('sign_in'.tr,
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: robotoBold
-                                                                .copyWith(
-                                                              color: Theme.of(
-                                                                  context)
-                                                                  .primaryColor,
-                                                              fontSize: Dimensions
-                                                                  .fontSizeLarge,
-                                                            )),
-                                                      ]),
-                                                ),
-                                              ),
-                                            )
-                                          ],
+                                              child: Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .center,
+                                                  children: [
+                                                    Text('sign_in'.tr,
+                                                        textAlign: TextAlign
+                                                            .center,
+                                                        style: robotoBold
+                                                            .copyWith(
+                                                          color: Theme
+                                                              .of(
+                                                              context)
+                                                              .primaryColor,
+                                                          fontSize: Dimensions
+                                                              .fontSizeLarge,
+                                                        )),
+                                                  ]),
+                                            ),
+                                          ),
                                         )
                                       ],
+                                    )
+                                  ],
+                                ),
+                              )
+                                  : const Center(
+                                  child: CircularProgressIndicator()),
+                              const SizedBox(height: Dimensions
+                                  .paddingSizeLarge),
+                              // SocialLoginWidget(),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: Dimensions.paddingSizeLarge,
+                                ),
+                                child: GuestButton(),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                  Dimensions.paddingSizeLarge,
+                                  0,
+                                  Dimensions.paddingSizeLarge,
+                                  Dimensions.paddingSizeLarge,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Text('i_agree_with'.tr,
+                                        style: robotoRegular),
+                                    const SizedBox(
+                                      width: 5,
                                     ),
-                                  )
-                                      : const Center(
-                                      child: CircularProgressIndicator()),
-                                  const SizedBox(
-                                      height: Dimensions.paddingSizeLarge),
-                                  // SocialLoginWidget(),
-                                  const Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: Dimensions.paddingSizeLarge,
-                                    ),
-                                    child: GuestButton(),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      Dimensions.paddingSizeLarge, 0, Dimensions.paddingSizeLarge, Dimensions.paddingSizeLarge,
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Text('i_agree_with'.tr,
-                                            style: robotoRegular),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text('terms_conditions'.tr,
-                                            style: robotoMedium.copyWith(
-                                                color: Colors.blue)),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: Dimensions.paddingSizeSmall,
-                                  ),
-                                ]);
-                          }),
-                        ),
+                                    Text('terms_conditions'.tr,
+                                        style: robotoMedium.copyWith(
+                                            color: Colors.blue)),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(
+                                height: Dimensions.paddingSizeSmall,
+                              ),
+                            ]);
+                        ,
                       ),
+                    ),
                   ),
                 ),
               ),
